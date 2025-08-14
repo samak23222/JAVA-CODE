@@ -1,0 +1,90 @@
+EXPENSE TRACKER:
+
+import java.util.*;
+
+public class ExpenseTracker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Double> expenses = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter expense (or 0 to stop): ₹");
+            double exp = sc.nextDouble();
+            if (exp == 0) break;
+            expenses.add(exp);
+        }
+
+        double total = expenses.stream().mapToDouble(Double::doubleValue).sum();
+        double max = expenses.stream().mapToDouble(Double::doubleValue).max().orElse(0);
+
+        System.out.println("Total Spent: ₹" + total);
+        System.out.println("Highest Expense: ₹" + max);
+    }
+}
+
+OUTPUT:
+Enter expense (or 0 to stop): ₹200
+Enter expense (or 0 to stop): ₹500
+Enter expense (or 0 to stop): ₹0
+Total Spent: ₹700.0
+Highest Expense: ₹500.0
+
+REVERSE EACH WORD IN A SENTENCE:
+
+import java.util.*;
+
+public class ReverseWords {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a sentence:");
+        String sentence = sc.nextLine();
+
+        String[] words = sentence.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            words[i] = new StringBuilder(words[i]).reverse().toString();
+        }
+        System.out.println(String.join(" ", words));
+    }
+}
+
+OUTPUT:
+Enter a sentence:
+Java is fun
+avaJ si nuf
+
+SORT WORD ALPHABETICALLY:
+import java.util.*;
+
+public class SortWords {
+    public static void main(String[] args) {
+        String text = "banana apple cherry mango";
+        String[] words = text.split(" ");
+        Arrays.sort(words);
+        System.out.println("Sorted: " + String.join(", ", words));
+    }
+}
+
+OUTPUT:
+Sorted: apple, banana, cherry, mango
+
+
+ROTATE ARRAY ELEMENT:
+import java.util.*;
+
+public class RotateArray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int k = 2; // rotate right by 2 positions
+
+        int n = arr.length;
+        int[] rotated = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            rotated[(i + k) % n] = arr[i];
+        }
+        System.out.println("Rotated Array: " + Arrays.toString(rotated));
+    }
+}
+
+OUTPUT:
+Rotated Array: [4, 5, 1, 2, 3]
